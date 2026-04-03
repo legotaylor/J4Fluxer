@@ -2,7 +2,6 @@ package com.j4fluxer.internal.gateway;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.j4fluxer.entities.CustomStatus;
 import com.j4fluxer.entities.OnlineStatus;
 import com.j4fluxer.entities.guild.GuildImpl;
 import com.j4fluxer.entities.message.Message;
@@ -80,9 +79,8 @@ public class GatewayClient extends WebSocketClient {
      * Sends a Presence Update (OpCode 3) to the Fluxer Gateway to change the bot's status.
      *
      * @param status The new {@link OnlineStatus} (e.g., ONLINE, DND, IDLE).
-     * @param customStatus A {@link CustomStatus} that would be displayed under the bots display name.
      */
-    public void setPresence(OnlineStatus status, CustomStatus customStatus) {
+    public void setPresence(OnlineStatus status) {
         if (!isOpen()) {
             System.err.println("[ERR] Gateway Client Not Open.");
             return;
@@ -96,8 +94,6 @@ public class GatewayClient extends WebSocketClient {
         d.put("activities", new org.json.JSONArray());
         d.put("status", status.getKey());
         d.put("afk", false);
-
-        if (customStatus != null) d.put("custom_status", customStatus.toJson());
 
         payload.put("d", d);
 

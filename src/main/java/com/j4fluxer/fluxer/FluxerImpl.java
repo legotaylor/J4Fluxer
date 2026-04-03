@@ -1,7 +1,6 @@
 package com.j4fluxer.fluxer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.j4fluxer.entities.CustomStatus;
 import com.j4fluxer.entities.OnlineStatus;
 import com.j4fluxer.entities.guild.Guild;
 import com.j4fluxer.entities.guild.GuildImpl;
@@ -155,23 +154,12 @@ public class FluxerImpl implements Fluxer {
      * Updates the bot's presence status on the gateway.
      *
      * @param status The {@link OnlineStatus} to set (e.g., ONLINE, IDLE, DND).
-     * @param customStatus A {@link CustomStatus} that would be displayed under the bots display name.
-     */
-    @Override
-    public void setStatus(OnlineStatus status, CustomStatus customStatus) {
-        if (this.gateway != null) {
-            this.gateway.setPresence(status, customStatus);
-        }
-    }
-
-    /**
-     * Updates the bot's presence status on the gateway.
-     *
-     * @param status The {@link OnlineStatus} to set (e.g., ONLINE, IDLE, DND).
      */
     @Override
     public void setStatus(OnlineStatus status) {
-        this.setStatus(status, null);
+        if (this.gateway != null) {
+            this.gateway.setPresence(status);
+        }
     }
 
     @Override
