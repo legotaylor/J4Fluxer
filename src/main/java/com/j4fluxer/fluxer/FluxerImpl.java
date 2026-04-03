@@ -160,7 +160,7 @@ public class FluxerImpl implements Fluxer {
     @Override
     public void setStatus(OnlineStatus status, CustomStatus customStatus) {
         if (this.gateway != null) {
-            this.gateway.setPresence(status);
+            this.gateway.setPresence(status, customStatus);
         }
     }
 
