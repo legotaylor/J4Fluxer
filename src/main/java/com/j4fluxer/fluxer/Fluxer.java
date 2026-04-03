@@ -1,9 +1,12 @@
 package com.j4fluxer.fluxer;
 
+import com.j4fluxer.entities.CustomStatus;
 import com.j4fluxer.entities.OnlineStatus;
 import com.j4fluxer.entities.guild.Guild;
 import com.j4fluxer.entities.user.User;
 import com.j4fluxer.internal.requests.RestAction;
+
+import java.util.Optional;
 
 /**
  * The core interface of the J4Fluxer (Java for Fluxer API).
@@ -47,7 +50,9 @@ public interface Fluxer {
      * Sets the presence status of the current session.
      *
      * @param status The {@link OnlineStatus} (e.g., ONLINE, DND, IDLE).
+     * @param customStatus A {@link CustomStatus} that would be displayed under the bots display name.
      */
+    void setStatus(OnlineStatus status, CustomStatus customStatus);
     void setStatus(OnlineStatus status);
 
     /**
