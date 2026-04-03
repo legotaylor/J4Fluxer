@@ -74,6 +74,21 @@ public class Route {
     /** DELETE request to remove a ban (unban) from a user in a guild. */
     public static final Route UNBAN_MEMBER = new Route(Method.DELETE, "/guilds/{guild_id}/bans/{user_id}");
 
+    /** GET request to retrieve a list of all emojis (including metadata about creators and timestamps) in a guild. */
+    public static final Route GET_EMOJIS = new Route(Route.Method.GET, "/guilds/{guild_id}/emojis");
+
+    /** POST request to create a new emoji in a guild. */
+    public static final Route CREATE_EMOJI = new Route(Route.Method.POST, "/guilds/{guild_id}/emojis");
+
+    /** POST request to create multiple new emojis in a guild. */
+    public static final Route CREATE_EMOJIS = new Route(Route.Method.POST, "/guilds/{guild_id}/emojis/bulk");
+
+    /** DELETE request to remove a emoji from a guild. */
+    public static final Route REMOVE_EMOJI = new Route(Route.Method.DELETE, "/guilds/{guild_id}/emojis/{emoji_id}");
+
+    /** PATCH request to modify a emoji in a guild. */
+    public static final Route MODIFY_EMOJI = new Route(Route.Method.PATCH, "/guilds/{guild_id}/emojis/{emoji_id}");
+    
     // --- User Routes ---
 
     /** GET request to retrieve a public user profile. */
